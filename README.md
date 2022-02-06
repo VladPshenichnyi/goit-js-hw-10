@@ -1,2 +1,3 @@
-# goit-js-hw-10
- 
+# parcel-bundler
+
+Сборка Parcel
