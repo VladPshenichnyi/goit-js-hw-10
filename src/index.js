@@ -25,30 +25,32 @@ function findCountries() {
         clearSearchResult();
         return Notiflix.Notify.info('Try to enter the first letters of the country you are interested in')
     }
-    console.log(fetchApiCountries.country)
-    console.log();
+    // console.log(fetchApiCountries.country)
     fetchApiCountries.fetchCountries()
         .then(countries => {
             let count = 0;
             count = countries.length;
-            console.log(count);
+            // console.log(count);
             if (count > 1 && count <= 10) {
                 createMarkupList(countries)
-                console.log("Кол-во найденых стран до 10");
+                // console.log("Список найденых стран до 10");
             }
-            if (count > 10) { 
+            if (count > 10 ) { 
                 clearSearchResult()
-                Notiflix.Notify.info('Большое количество стран введите еще 1 букву')
-                console.log('Найденно большое кол-во стран');
+                Notiflix.Notify.info('Too many matches found. Please enter a more specific name.')
+                // console.log('Найденно большое кол-во стран');
             }
             if (count === 1) { 
                 createMarkupCountry(countries)
+            }
+            if (count === undefined) {
+                clearSearchResult()
+                Notiflix.Notify.failure('Oops, there is no country with that name')
             }
         })
         
 }
 
-// .catch(Notiflix.Notify.failure('Oops, there is no country with that name'))
 function clearSearchResult() { 
     resultOfSearch.countryList.innerHTML = '';
     resultOfSearch.countryInfo.innerHTML = '';

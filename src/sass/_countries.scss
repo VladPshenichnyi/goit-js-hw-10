@@ -3,12 +3,12 @@ li {
 }
 
 .container {
+  background-image: url();
   width: 400px;
   height: 100%;
   margin-left: auto;
   margin-right: auto;
   .country-list {
-    text-align: match-parent;
     font-weight: bold;
   }
   .title-countries {
