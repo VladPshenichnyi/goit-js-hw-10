@@ -9,7 +9,12 @@ export default class FetchApiCountries {
     fetchCountries() {
         const url = `${BASE_URL}/name/${this.seekCountry}${this.seekOptions}`;
         // console.log(`Мы ищем ==> ${this.seekCountry}`);
-        return fetch(url).then(response => response.json())
+        return fetch(url).then((response) => {
+            if (!response.ok) {
+            throw new Error(response.status);
+            }
+            return response.json();
+        })
             .then(countries => { 
             // console.log(countries)
             return countries;                   
